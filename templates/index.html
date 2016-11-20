@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Repomeister</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <style>
+    a {
+        color: #467248;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .languages {
+        display: none;
+    }
+
+    .languages div {
+        height: 25px;
+        float: left;
+        font-size: 17px;
+        color: #fff;
+    }
+
+    .line_bar:hover .languages {
+        display: block;
+    }
+
+    .line_bar:hover .loc_number {
+        display: none;
+    }
+    </style>
+  </head>
+  <body style="font-family: Arial, Helvetica, sans-serif; background-color: #d9ede1; color: #333">
+    <article id="main" style="padding: 0 10%;">
+
+        <div style="padding-left: 300px; padding-bottom: 30px; position: relative;">
+            <div style="width: 290px; padding-bottom: 30px;">
+                <h1 style="font-size: 55px; margin: 10px 0 0 0;">Codebases</h1>
+                <p style="text-align: right; margin-top: 0;">Lines of code per project</p>
+            </div>
+            <div style="font-size: 12px; position: relative;">
+                <div style="position: relative; float: left;">0</div>
+                <div style="position: relative; float: left; padding-left:23%">{{(max_lines / 2 * 0.5)|round|int}}</div>
+                <div style="position: relative; float: left; padding-left:23%">{{(max_lines / 2)|round|int}}</div>
+                <div style="position: relative; float: left; padding-left:23%">{{(max_lines / 2 * 1.5)|round|int}}</div>
+                <div style="position: relative; padding-left:98%">{{max_lines|round|int}}</div>
+            </div>
+        </div>
+
+        <ul style="list-style: none; padding-left: 0;">
+
+        {% for repo in repos %}
+            <li style="padding: 0 0 20px 0; overflow: auto; position: relative; overflow-y: hidden; overflow-x: hidden;">
+                <div style="float: left; clear: left; width: 280px; text-align: right; margin-right: 20px; font-size: 17px; margin-top: 2px;">{{repo.name}}</div>
+                <div style="margin-left: 300px;">
+                    <div style="float: left; background-color: #8199c1; height: 25px; width: {{repo.lines_of_code/max_lines*100}}%;" class="line_bar">
+                        <div class="languages" style="">
+                            {% for language in repo.languages %}
+                                <div style="
+                                    width: {{language.lines_percentage}};
+                                    {% if language.language == 'python' %}
+                                        background-color: #3671A2;
+                                        color: #FFCF3F;
+                                    {% elif language.language == 'go' %}
+                                        background-color: #8FE3E5;
+                                        color: #333;
+                                    {% elif language.language == 'sh' %}
+                                        background-color: #666;
+                                        color: #00ff00;
+                                    {% elif language.language == 'js' %}
+                                        background-color: #F7DF1E;
+                                        color: #333;
+                                    {% else %}
+                                        background-color: #aaa;
+                                        color: #333;
+                                    {% endif %}
+                                ">
+                                    &nbsp;{{language.language}}
+                                    <span style="font-size: 12px;">({{language.lines_percentage}})</span>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <span class="loc_number" style="
+                            float: right;
+                            margin-top: 4px;
+                            margin-right: 10px;
+                            font-size: 13px;
+                            color: #fff;
+                        ">{{repo.lines_of_code}}</span>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+
+
+        </ul>
+    </article>
+    <footer style="padding: 10px 10%; text-align: right;">
+    <hr style="
+        width: 350px;
+        float: right;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #467248;
+        margin: 0em 0;
+        padding: 0;
+    " /><br />
+    Built by <a href="https://consolia-comic.com/">Tim Quax</a>. Fork it on <a href="https://github.com/wisc/repomeister">Github!</a>
+    </footer>
+  </body>
+</html>
