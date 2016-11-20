@@ -4,12 +4,12 @@ A tool that calculates the meta data of GIT projects (the lines of code, breakdo
 
 Dependencies:
 
-- [sloccount](http://www.dwheeler.com/sloccount/)
+- [sloccount](https://github.com/wisc/sloccount)
 - [python](https://www.python.org/)
     - [jinja2](http://jinja.pocoo.org/docs/dev/)
     - [pymongo](https://api.mongodb.com/python/current/)
 
-Sloccount turns out to be ancient, so i forked it and added support for languages that have arisen in the last decade plus. You can either [get and install the original sloccount](http://www.dwheeler.com/sloccount/) through apt or get the updated source [from here](https://github.com/wisc/) where i added support for Javascript, Go and PDE (arduino), and added a bunch of bugfixes, like the faulty loc counting for GIT repos.
+Sloccount turns out to be ancient, so i forked it and added support for languages that have arisen in the last decade plus. You can either [get and install the original sloccount](http://www.dwheeler.com/sloccount/) through apt or get the updated source [from here](https://github.com/wisc/sloccount) where i added support for Javascript, Go and PDE (arduino), and added a bunch of bugfixes, like the faulty loc counting for GIT repos.
 
 ## Getting started
 
