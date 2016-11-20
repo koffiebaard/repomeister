@@ -57,3 +57,8 @@ $ python compile_web.py
 ```
 
 Which will create `dist/index.html`, which is all you'll ever need. Yay.
+
+
+## example screenshot
+
+![Example screenshot](docs/screenshot_repomeister.png)
