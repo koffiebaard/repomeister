@@ -58,28 +58,39 @@
                     <div style="float: left; background-color: #8199c1; height: 25px; width: {{repo.lines_of_code/max_lines*100}}%;" class="line_bar">
                         <div class="languages" style="">
                             {% for language in repo.languages %}
-                                <div style="
-                                    width: {{language.lines_percentage}};
-                                    {% if language.language == 'python' %}
-                                        background-color: #3671A2;
-                                        color: #FFCF3F;
-                                    {% elif language.language == 'go' %}
-                                        background-color: #8FE3E5;
-                                        color: #333;
-                                    {% elif language.language == 'sh' %}
-                                        background-color: #666;
-                                        color: #00ff00;
-                                    {% elif language.language == 'js' %}
-                                        background-color: #F7DF1E;
-                                        color: #333;
-                                    {% else %}
-                                        background-color: #aaa;
-                                        color: #333;
-                                    {% endif %}
-                                ">
-                                    &nbsp;{{language.language}}
-                                    <span style="font-size: 12px;">({{language.lines_percentage}})</span>
-                                </div>
+                                {% if language.lines_percentage[:-1]|int > 1 %}
+                                    <div style="
+                                        width: {{language.lines_percentage}};
+                                        {% if language.language == 'python' %}
+                                            background-color: #3671A2;
+                                            color: #FFCF3F;
+                                        {% elif language.language == 'go' %}
+                                            background-color: #8FE3E5;
+                                            color: #333;
+                                        {% elif language.language == 'sh' %}
+                                            background-color: #666;
+                                            color: #00ff00;
+                                        {% elif language.language == 'js' %}
+                                            background-color: #F7DF1E;
+                                            color: #333;
+                                        {% elif language.language == 'java' %}
+                                            background-color: #E00000;
+                                            color: #ddd;
+                                        {% elif language.language == 'php' %}
+                                            background-color: #8892BF;
+                                            color: #333;
+                                        {% elif language.language == 'objc' %}
+                                            background-color: #fff;
+                                            color: #333;
+                                        {% else %}
+                                            background-color: #aaa;
+                                            color: #333;
+                                        {% endif %}
+                                    ">
+                                        &nbsp;{{language.language}}
+                                        <span style="font-size: 12px;">({{language.lines_percentage}})</span>
+                                    </div>
+                                {% endif %}
                             {% endfor %}
                         </div>
 

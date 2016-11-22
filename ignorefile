@@ -1,0 +1,7 @@
+node_modules
+extensions
+app/extensions
+vendor
+src/raml
+src/swagger
+src/docs

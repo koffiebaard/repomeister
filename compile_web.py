@@ -20,9 +20,9 @@ def round_up_severely(number):
 
     return number
 
-repos = db[db_name].find({"$query": {}, "$orderby": {"lines_of_code": 1}})
+repos = db[db_name].find({"$query": {"display": True}, "$orderby": {"lines_of_code": 1}})
 
-max_lines = db[db_name].find_one({"$query": {}, "$orderby": {"lines_of_code": -1}})
+max_lines = db[db_name].find_one({"$query": {"display": True}, "$orderby": {"lines_of_code": -1}})
 max_lines_of_code = round_up_severely(max_lines["lines_of_code"])
 
 env = Environment(loader=FileSystemLoader('templates'))

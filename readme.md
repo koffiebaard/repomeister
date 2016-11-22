@@ -8,8 +8,9 @@ Dependencies:
 - [python](https://www.python.org/)
     - [jinja2](http://jinja.pocoo.org/docs/dev/)
     - [pymongo](https://api.mongodb.com/python/current/)
+- [mongo](https://www.mongodb.com/)
 
-Sloccount turns out to be ancient, so i forked it and added support for languages that have arisen in the last decade plus. You can either [get and install the original sloccount](http://www.dwheeler.com/sloccount/) through apt or get the updated source [from here](https://github.com/wisc/sloccount) where i added support for Javascript, Go and PDE (arduino), and added a bunch of bugfixes, like the faulty loc counting for GIT repos.
+It counts the lines of code using `sloccount`. Sloccount turns out to be ancient, so i forked it and added support for languages that have arisen in the last decade plus. You can either install [the original sloccount](http://www.dwheeler.com/sloccount/) through apt or get the new shiny updated source [from here](https://github.com/wisc/sloccount) where i added support for Javascript, Go and PDE (arduino), and added a bunch of bugfixes, like the faulty loc counting for GIT repos.
 
 ## Getting started
 
@@ -27,9 +28,9 @@ export repomeister_db_port=27017
 export repomeister_db_name=repomeister
 ```
 
-3) Create a file called `repo_file` in the root and add your GIT repos to it. Just a list of GIT strings, like so:
+3) Create a file called `repofile` in the root and add your GIT repos to it. Just a list of GIT strings, like so:
 
-./repo_file
+./repofile
 ```
 git@github.com:wisc/consolia-api.git
 git@bitbucket.org:timquax/consolia-api-python-mongo.git

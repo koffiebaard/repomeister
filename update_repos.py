@@ -8,7 +8,7 @@ client = pymongo.MongoClient(os.environ["repomeister_db_host"], int(os.environ["
 db_name = os.environ["repomeister_db_name"]
 db = client[db_name]
 
-repo_file = open('repo_file', 'r')
+repofile = open('repofile', 'r')
 
 def get_stats(git_string):
     p = Popen(['./get_stats_repo.sh', git_string], stdin=PIPE, stdout=PIPE)
@@ -27,13 +27,14 @@ def get_stats(git_string):
         print err
 
 
-for git_string in repo_file:
+for git_string in repofile:
     stats = get_stats(git_string)
 
     if stats:
         print stats["name"], stats["lines_of_code"]
 
         stats["slug"] = git_string
+        stats["display"] = True
 
         stats_already_in_db = db[db_name].find_one({"slug": stats["slug"]})
 
@@ -42,7 +43,9 @@ for git_string in repo_file:
                 {"slug": stats["slug"]},
                 {"$set": {
                     "name": stats["name"],
+                    "lines_of_code": stats["lines_of_code"],
                     "languages": stats["languages"],
+                    "display": True,
                     "updated_on": datetime.datetime.utcnow(),
                 }}
             )

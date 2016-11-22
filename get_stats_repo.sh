@@ -25,6 +25,12 @@ if [ "$git_string" ] && [ "$repo_name" ]; then
         if [ -d $repo_name ]; then
             cd $repo_name
 
+            while read third_party_dir; do
+                if [ -d $third_party_dir ]; then
+                    rm -rf $third_party_dir
+                fi
+            done <$current_dir/ignorefile
+
             # The Business©
             sloc=$($SLOC .)
 

@@ -1,0 +1,9 @@
+git@bitbucket.org:mobgen/shell-b2c-dynamo.git
+git@bitbucket.org:mobgen/plus-middleware.git
+git@bitbucket.org:mobgen/aegon-middleware.git
+git@bitbucket.org:mobgen/b2c-sso-federation-nodejs.git
+git@bitbucket.org:mobgen/halo-modules.git
+git@bitbucket.org:mobgen/shell-b2c-rule-engine.git
+hg@bitbucket.org:mobgen/shell-cvp-backend.git
+hg@bitbucket.org:mobgen/toto-backend.git
+hg@bitbucket.org:mobgen/meldmisdaadanoniem-backend.git
